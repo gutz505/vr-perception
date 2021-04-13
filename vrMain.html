@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <!--Storage Racks-->
+        <a-asset-item id="racksModel" src="http://127.0.0.1:8080/OBJ/VREnvironmentStorageRackst.gltf"></a-asset-item>
+
+        <!--Cars-->
+        <a-asset-item id="carsModel" src="http://127.0.0.1:8080/OBJ/VREnvironmentCars.gltf"></a-asset-item>
+
+        <!--Fruit-->
+        <a-asset-item id="fruitModel" src="http://127.0.0.1:8080/OBJ/VREnvironmentFruit.gltf"></a-asset-item>
+
+        <!--Instruments-->
+        <a-asset-item id="instModel" src="http://127.0.0.1:8080/OBJ/VREnvironmentInstruments.gltf"></a-asset-item>
+
+        <!--Paintings-->
+        <a-asset-item id="paintModel" src="http://127.0.0.1:8080/OBJ/VREnvironmentPaintings.gltf"></a-asset-item>
+      </a-assets>
+
+      <!--World-->
+      <!--<a-plane id="#groundPlane" color="#595959" position="-6.16 0 -31.34" rotation="-90 0 0" width="100" height="100"></a-plane>-->
+      <a-plane id="#groundPlane" color="#595959" position="-6.16 0 -31.34" rotation="-90 0 0" width="100" height="100" src="http://127.0.0.1:8080/textures/Tiles078_2K_Color.jpg" repeat="15 15"></a-plane>
+      <a-entity gltf-model="#racksModel"></a-model></a-obj-model>
+      <a-entity gltf-model="#carsModel"></a-model></a-obj-model>
+      <a-entity gltf-model="#fruitModel"></a-model></a-obj-model>
+      <a-entity gltf-model="#instModel"></a-model></a-obj-model>
+      <a-entity gltf-model="#paintModel"></a-model></a-obj-model>
+
+      <a-box position="0 0 0" color="red" scale="0.2 0.2 0.2"></a-box>
+
+      <!--Camera-->
+      <a-curve id="track1" type="Spline">
+        <a-curve-point position="0 0.1 0"></a-curve-point>
+        <a-curve-point position="0 0.1 -10.87"></a-curve-point>
+        <a-curve-point position="5.7 0.1 -10.87"></a-curve-point>
+        <a-curve-point position="12.14 0.1 -10.87"></a-curve-point>
+        <a-curve-point position="12.14 0.1 -5.91"></a-curve-point>
+        <a-curve-point position="17.77 0.1 -5.91"></a-curve-point>
+        <a-curve-point position="17.77 0.1 -12.94"></a-curve-point>
+        <a-curve-point position="17.77 0.1 -29.6"></a-curve-point>
+        <a-curve-point position="17.77 0.1 -34.9"></a-curve-point>
+        <a-curve-point position="5.54 0.1 -35.13"></a-curve-point>
+        <a-curve-point position="5.54 0.1 -47.52"></a-curve-point>
+        <a-curve-point position="-6.83 0.1 -47.52"></a-curve-point>
+        <a-curve-point position="-7.11 0.1 -60"></a-curve-point>
+        <a-curve-point position="-16.7 0.1 -60"></a-curve-point>
+        <a-curve-point position="-27.5 0.1 -60"></a-curve-point>
+        <a-curve-point position="-27.5 0.1 -50.4"></a-curve-point>
+        <a-curve-point position="-27.5 0.1 -39.45"></a-curve-point>
+        <a-curve-point position="-22.8 0.1 -39.45"></a-curve-point>
+        <a-curve-point position="-22.8 0.1 -32.07"></a-curve-point>
+        <a-curve-point position="-22.8 0.1 -25.61"></a-curve-point>
+      </a-curve>
+      <a-draw-curve curveref="#track1" material="shader: line; color: blue;"></a-draw-curve>
+
+      <a-entity alongpath="curve: #track1; loop: false; dur: 120000; delay: 30000">
+        <a-entity camera look-controls position="0 1 0"></a-entity>
+      </a-entity>
+
+      <!--Ambience and Lighting-->
+      <a-sky color="#94e1ff"></a-sky>
+
+      <a-light type="ambient" color="#f0ffff" intensity="2"></a-light>
+      <a-entity light="type: point; intensity: 0.1; distance: 100; castShadow: true; position: -0.15 5.759 -5.765; target: #groundPlane">
+
+    </a-scene>
+    
+  </body>
+</html>
